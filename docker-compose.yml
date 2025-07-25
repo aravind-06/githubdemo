@@ -10,7 +10,7 @@ services:
       - ci
 
   jenkins:
-    image: jenkins/jenkins:lts
+    build: ./jenkins 
     container_name: jenkins
     user: root
     ports:
@@ -20,6 +20,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - ci
+    restart: unless-stopped
 
 networks:
   ci:
