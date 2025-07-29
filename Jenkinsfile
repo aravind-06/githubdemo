@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3' // This must match the name you define in Jenkins Global Tools
+        maven 'maven3' // This must match the name you define in Jenkins Global Tools
         jdk 'jdk17'     // Define Java version (use name from Jenkins config)
     }
 
@@ -25,10 +25,15 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('MySonar') {
+                withSonarQubeEnv('mysonar') {
                     sh 'mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN'
                 }
             }
         }
+         stage('Docker Build') {
+     		 steps {
+       		 sh 'docker build -t githubdemo-app .'
+      }
     }
+   }
 }
