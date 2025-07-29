@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'jenkins-token', url: 'https://github.com/aravind-06/gitgubdemo.git'
+                git credentialsId: 'jenkins-token', url: 'https://github.com/aravind-06/githubdemo.git'
             }
         }
 
